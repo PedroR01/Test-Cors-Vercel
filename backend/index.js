@@ -27,34 +27,36 @@ const __dirname = path.dirname(__filename);
 dotenv.config({ path: path.resolve(__dirname, ".env") });
 
 // CORS middleware
-app.use(
-  cors({
-    origin: "http://localhost:5173",
-    credentials: true,
-  })
-);
+// app.use(
+//   cors({
+//     origin: [
+//       "https://elclubdelfilete.com.ar",
+//       "http://localhost:5173"],
+//     credentials: true,
+//   })
+// );
 
-// const allowedOrigins = [
-//   "https://elclubdelfilete.com.ar",
-//   "http://localhost:5173",
-//   "http://localhost:3001",
-// ];
+const allowedOrigins = [
+  "https://elclubdelfilete.com.ar",
+  "http://localhost:5173",
+  "http://localhost:3001",
+];
 
-// // Reflect the origin if it's in the allowed list or not defined (cURL, Postman, etc.)
-// const corsOptions = {
-//   origin: (origin, callback) => {
-//     if (allowedOrigins.includes(origin) || !origin) {
-//       callback(null, true);
-//     } else {
-//       callback(new Error("Origin not allowed by CORS"));
-//     }
-//   },
-//   methods: ["POST", "GET", "UPDATE", "DELETE", "PATCH", "OPTIONS"],
-//   credentials: true,
-// };
+// Reflect the origin if it's in the allowed list or not defined (cURL, Postman, etc.)
+const corsOptions = {
+  origin: (origin, callback) => {
+    if (allowedOrigins.includes(origin) || !origin) {
+      callback(null, true);
+    } else {
+      callback(new Error("Origin not allowed by CORS"));
+    }
+  },
+  methods: ["POST", "GET", "UPDATE", "DELETE", "PATCH", "OPTIONS"],
+  credentials: true,
+};
 
-// // Enable preflight requests for all routes
-// app.options("*", cors(corsOptions));
+// Enable preflight requests for all routes
+app.options("*", cors(corsOptions));
 
 // app.use(corsMiddleware);
 app.use(express.json());
