@@ -23,36 +23,6 @@ const __dirname = path.dirname(__filename);
 
 dotenv.config({ path: path.resolve(__dirname, ".env") });
 
-// CORS middleware
-// app.use(
-//   cors({
-//     origin: "http://localhost:5173",
-//     credentials: true,
-//   })
-// );
-
-// const allowedOrigins = [
-//   "https://elclubdelfilete.com.ar",
-//   "http://localhost:5173",
-//   "http://localhost:3001",
-// ];
-
-// // Reflect the origin if it's in the allowed list or not defined (cURL, Postman, etc.)
-// const corsOptions = {
-//   origin: (origin, callback) => {
-//     if (allowedOrigins.includes(origin) || !origin) {
-//       callback(null, true);
-//     } else {
-//       callback(new Error("Origin not allowed by CORS"));
-//     }
-//   },
-//   methods: ["POST", "GET", "UPDATE", "DELETE", "PATCH", "OPTIONS"],
-//   credentials: true,
-// };
-
-// // // Enable preflight requests for all routes
-// app.options("*", cors(corsOptions));
-
 app.use(corsMiddleware);
 app.use(express.json());
 app.use(cookieParser());
@@ -96,5 +66,3 @@ app.use(errorHandler); // Esto debe ir al final para manejar cualquier error no 
 app.listen(PORT, () => {
   console.log(`Servidor corriendo en ${PORT}`);
 });
-
-// export default app;

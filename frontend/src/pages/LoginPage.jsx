@@ -25,13 +25,7 @@ export default function LoginPage() {
 
   const sendData = async ({ username, password }) => {
     try {
-      // await fetch('https://club-filete-backend-3kklxje47-pedros-projects-3596de7b.vercel.app/login', {
-      //   method: "OPTIONS",
-      //   headers: { "Content-Type": "application/json" },
-      //   credentials: "include"
-      // });
-
-      const response = await fetch(`${serverUrl.testLocal}/login`, {
+      const response = await fetch(`${serverUrl.produccion}/login`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ username, password }),

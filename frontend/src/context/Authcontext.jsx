@@ -12,7 +12,7 @@ export default function AuthContextProvider({ children }) {
       try {
         // http://localhost:3001/
         // https://club-filete-backend-3kklxje47-pedros-projects-3596de7b.vercel.app/
-        const response = await fetch(`${serverUrl.testLocal}/api/verify`, {
+        const response = await fetch(`${serverUrl.produccion}/api/verify`, {
           method: 'POST',
           credentials: "include",
         });

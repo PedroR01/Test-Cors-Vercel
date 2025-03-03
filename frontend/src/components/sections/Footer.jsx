@@ -2,14 +2,13 @@ import { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthContextFunct';
 import serverUrl from '../utils/serverUrl';
-// import { AuthContext } from '../../context/Authcontext'
 export default function Footer() {
   const { isAuthenticated, setIsAuthenticated } = useContext(AuthContext);
   const navigate = useNavigate();
 
   const logOut = async () => {
     try {
-      const response = await fetch(`${serverUrl.testLocal}/logout`, {
+      const response = await fetch(`${serverUrl.produccion}/logout`, {
         method: 'POST',
         credentials: "include", // Esto asegura que las cookies se envíen
       });

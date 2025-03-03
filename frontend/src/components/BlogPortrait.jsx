@@ -1,6 +1,5 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { useContext, useState } from "react";
-// import { AuthContext } from '../context/Authcontext'; // Importamos el contexto de autenticación
 import { AuthContext } from '../context/AuthContextFunct';
 import serverUrl from './utils/serverUrl';
 import { PencilIcon, Trash2Icon } from 'lucide-react';
@@ -48,7 +47,7 @@ export default function BlogPortrait({ content, orientation }) {
         const { id, created_at, ...filteredData } = blogContent;
 
         try {
-            const responseDeleteBlog = await fetch(`${serverUrl.testLocal}/api/blogs`, {
+            const responseDeleteBlog = await fetch(`${serverUrl.produccion}/api/blogs`, {
                 method: 'DELETE', // Método DELETE para eliminar
                 headers: {
                     'Content-Type': 'application/json'
@@ -61,7 +60,7 @@ export default function BlogPortrait({ content, orientation }) {
             }
             else {
                 console.log("Contenido del blog eliminado");
-                const responseDeleteImg = await fetch(`${serverUrl.testLocal}/api/storage`, {
+                const responseDeleteImg = await fetch(`${serverUrl.produccion}/api/storage`, {
                     method: 'DELETE', // Método DELETE para eliminar
                     headers: {
                         'Content-Type': 'application/json'
@@ -69,7 +68,7 @@ export default function BlogPortrait({ content, orientation }) {
                     body: JSON.stringify({ folderName: blogContent.title }) // Enviar el título en JSON
                 });
                 if (!responseDeleteImg.ok) {
-                    const responseDataUpload = await fetch(`${serverUrl.testLocal}/api/blogs`, {
+                    const responseDataUpload = await fetch(`${serverUrl.produccion}/api/blogs`, {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify(filteredData)
