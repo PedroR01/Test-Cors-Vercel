@@ -10,12 +10,22 @@ const router = createBrowserRouter([
     path: "/*",
     element: <OnStartAnimate />,
   },
-]);
+], {
+  future: {
+    v7_relativeSplatPath: true,
+    v7_fetcherPersist: true,
+    v7_normalizeFormMethod: true,
+    v7_partialHydration: true,
+    v7_skipActionErrorRevalidation: true,
+  },
+});
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <HelmetProvider>
-      <RouterProvider router={router} />
+      <RouterProvider future={{
+        v7_startTransition: true,
+      }} router={router} />
     </HelmetProvider>
   </StrictMode>,
 )

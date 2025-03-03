@@ -1,2 +1,10 @@
 User-agent: *
 Disallow:
+
+User-agent: Googlebot
+Allow: /
+
+User-agent: Googlebot-Image
+Allow: /
+
+Sitemap: https://elclubdelfilete.com.ar/sitemap.txt

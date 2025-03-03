@@ -21,8 +21,10 @@ export default function App() {
           <Route path="/" element={<Landing />}></Route>
           <Route path="/historia" element={<Historia />}></Route>
           <Route path="/tienda" element={<Tienda />}></Route>
-          <Route path="/novedades" element={<Novedades />}></Route>
-          <Route path="/novedades/:slug" element={<Blog />}></Route>
+          <Route path="/novedades">
+            <Route index element={<Novedades />} />
+            <Route path=":slug" element={<Blog />} />
+          </Route>
           <Route path="/login" element={<Login />}></Route>
           <Route path="/signUp" element={<SignUp />}></Route>
           <Route path="/añadirBlog/:title?" element={
