@@ -1,0 +1,261 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "Hamston";
+  src: url("./assets/fonts/Hamston.ttf") format("truetype");
+  font-weight: bold;
+  font-style: normal;
+}
+
+html {
+  height: 100%;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  box-sizing: inherit;
+  min-height: 100%;
+  margin: 0;
+  background-color: rgb(34 33 33);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* --- TIPOGRAFÍAS ---  */
+.hamston {
+  font-family: "Hamston", normal;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.montserrat-normal {
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.inria-sans-regular {
+  font-family: "Inria Sans", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.inria-sans-bold {
+  font-family: "Inria Sans", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.inria-sans-regular-bold {
+  font-family: "Inria Serif", serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.allura-regular {
+  font-family: "Allura", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+/* <weight>: Use a value from 400 to 700
+ <uniquifier>: Use a unique and descriptive class name */
+.afacad-normal {
+  font-family: "Afacad", serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.afacad-bold {
+  font-family: "Afacad", serif;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: normal;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+/* --- TEXT TAGS --- */
+
+h1 {
+  @apply afacad-bold text-[#CDA053] text-3xl lg:text-4xl xl:text-5xl;
+}
+
+h2 {
+  @apply afacad-bold text-[#CDA053] text-2xl lg:text-3xl;
+}
+
+h3 {
+  @apply afacad-bold font-bold text-[#CDA053] text-3xl lg:text-4xl 2xl:text-5xl;
+}
+
+h4 {
+  @apply afacad-bold text-[#CDA053] text-lg lg:text-xl xl:text-2xl;
+}
+
+h5 {
+  @apply afacad-bold text-[#CDA053] text-lg lg:text-xl;
+}
+
+p {
+  @apply afacad-normal text-[#FEFFFB] text-base lg:text-lg xl:text-xl;
+
+  /* font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  --tw-text-opacity: 1;
+  color: rgb(254 255 251 / var(--tw-text-opacity, 1));
+  font-size: 1rem;
+  line-height: 1.5rem; */
+}
+
+/* --- NAVBAR --- */
+/* animación elementos navbar */
+.nav-link {
+  position: relative; /* Necesario para posicionar el subrayado */
+  display: inline-block;
+  text-decoration: none; /* Quitar el subrayado por defecto */
+  color: #cda053;
+  transition: transform 0.3s ease-in-out;
+}
+
+.nav-link:hover {
+  transform: scale(1.2, 1.2);
+  transition: transform 0.3s ease-in-out;
+  filter: brightness(1.2);
+}
+
+.nav-link .underline-img {
+  position: absolute;
+  top: 1.5rem; /* Alineado al borde inferior del enlace */
+  left: 50%; /* Centrado horizontalmente */
+  transform: translateX(-50%) scaleX(0); /* Inicialmente invisible */
+  transform-origin: center; /* Ancla de la animación */
+  width: 100%; /* Puede ajustarse según el tamaño deseado */
+  height: 1rem; /* Ajusta según el tamaño de tu imagen */
+  background: url("/src/img/misc/separador.png") no-repeat center; /* Imagen del subrayado */
+  background-size: contain; /* Escala la imagen correctamente */
+  transition: transform 0.3s ease-in-out; /* Animación suave */
+}
+
+.nav-link:hover .underline-img {
+  transform: translateX(-50%) scaleX(1); /* Muestra la imagen al hacer hover */
+}
+
+/* --- LANDING SECTION --- */
+.intro {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+    url("../src/img/introClub.gif");
+  height: 100vh;
+  width: 100vw;
+  z-index: 0;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-blend-mode: multiply;
+}
+
+/* --- HISTORIA SECTION --- */
+.magicpattern {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: repeat;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='2000' height='1400'%3E%3Cpath fill='%238F272A' d='M0 0h2000v1400H0z'/%3E%3Cpath fill='%232F0C0D' d='M0 700c85.907 35.492 171.813 70.985 250 60 78.187-10.985 148.654-68.446 234-100 85.346-31.554 185.572-37.201 271-32 85.428 5.201 156.06 21.25 240 49s181.19 67.201 263 87c81.81 19.799 148.18 19.946 228-5s173.092-74.985 261-89c87.908-14.015 170.454 7.992 293 30l-40 700H0Z'/%3E%3C/svg%3E");
+}
+
+/* Imagen de fondo Historia */
+.fixed-bg {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+    url("../src/img/historia/historiaClub.jpg");
+  min-height: 800px;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-blend-mode: multiply;
+}
+
+/* Estilos para el blog */
+
+.tiptap > ol {
+  @apply montserrat-normal text-base text-justify md:text-lg text-[#FEFFFB] list-decimal my-2 ml-4;
+}
+
+.tiptap > ul {
+  @apply montserrat-normal text-base text-justify md:text-lg text-[#FEFFFB] list-disc my-2 ml-4;
+}
+
+@layer utilities {
+  .forma-imagen {
+    clip-path: polygon(0 0, 36% 0, 100% 100%, 0% 100%);
+  }
+
+  .flex-flow-noWrap {
+    flex-flow: nowrap;
+  }
+
+  .place-self-anchor-center {
+    place-self: anchor-center;
+  }
+
+  .aspect-3_4 {
+    aspect-ratio: 3/4;
+  }
+
+  .h-wb-fill {
+    height: -webkit-fill-available;
+  }
+
+  .h-inherit {
+    height: inherit;
+  }
+
+  .text-last {
+    text-align-last: center;
+  }
+
+  .text-wb-center {
+    text-align: -webkit-center;
+  }
+
+  .text-wb-center-support {
+    -webkit-text-size-adjust: 100%;
+  }
+
+  .shadow-academia {
+    box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  }
+
+  .shadow-blog-main {
+    box-shadow: rgb(0, 0, 0) 0px 14px 37px -10px;
+  }
+
+  .shadow-blog-sec {
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+  }
+}
+@media only screen and (max-height: 680px) and (min-width: 607px) {
+  .intro p {
+    font-size: 1rem;
+  }
+  .intro img {
+    height: 12rem;
+  }
+}
