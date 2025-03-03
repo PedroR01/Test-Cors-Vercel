@@ -205,8 +205,18 @@ export class UserRepository {
         });
 
         if (error) {
-          res.clearCookie("access_token");
-          res.clearCookie("refresh_token");
+          res.clearCookie("access_token", {
+            httpOnly: true,
+            secure: true, // Cambiar a true en producción
+            maxAge: DURATION_REFRESH_COOKIE, // Largo para refresh token
+            sameSite: "None",
+          });
+          res.clearCookie("refresh_token", {
+            httpOnly: true,
+            secure: true, // Cambiar a true en producción
+            maxAge: DURATION_REFRESH_COOKIE, // Largo para refresh token
+            sameSite: "None",
+          });
           throw new AppError("unauthorized", 401, "Usuario no autorizado");
         }
 

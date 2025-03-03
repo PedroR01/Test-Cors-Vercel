@@ -2,7 +2,6 @@ import dotenv from "dotenv";
 import { fileURLToPath } from "url";
 import path from "path";
 import express from "express";
-import cors from "cors";
 import resendRouter from "./routes/api/resend.js";
 import loginRouter from "./routes/user/auth/login.js";
 import logoutRouter from "./routes/user/auth/logout.js";
@@ -13,11 +12,9 @@ import blogImgRouter from "./routes/blog/blogBucket.js";
 import logedUserCookiesRouter from "./routes/user/cookies/userCookie.js";
 import cookieParser from "cookie-parser";
 import errorHandler from "./middlewares/errorHandler.js";
-// import corsMiddleware from "./middlewares/corsMiddleware.js";
+import corsMiddleware from "./middlewares/corsMiddleware.js";
 
-// dotenv.config();
 const app = express();
-// const PORT = "https://club-filete-backend-3kklxje47-pedros-projects-3596de7b.vercel.app/";
 const PORT = process.env.PORT || 3001;
 
 // Simula la variable global de dirección dinámica `__dirname` de CommonJS en módulos ES
@@ -27,12 +24,12 @@ const __dirname = path.dirname(__filename);
 dotenv.config({ path: path.resolve(__dirname, ".env") });
 
 // CORS middleware
-app.use(
-  cors({
-    origin: "http://localhost:5173",
-    credentials: true,
-  })
-);
+// app.use(
+//   cors({
+//     origin: "http://localhost:5173",
+//     credentials: true,
+//   })
+// );
 
 // const allowedOrigins = [
 //   "https://elclubdelfilete.com.ar",
@@ -53,30 +50,19 @@ app.use(
 //   credentials: true,
 // };
 
-// // Enable preflight requests for all routes
+// // // Enable preflight requests for all routes
 // app.options("*", cors(corsOptions));
 
-// app.use(corsMiddleware);
+app.use(corsMiddleware);
 app.use(express.json());
 app.use(cookieParser());
-
-// app.options("*", (req, res) => {
-//   res.header("Access-Control-Allow-Origin", req.headers.origin);
-//   res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
-//   res.header("Access-Control-Allow-Headers", "Content-Type, Authorization");
-//   res.header("Access-Control-Allow-Credentials", "true");
-//   res.sendStatus(204); // Responde sin contenido
-// });
 
 app.get("/", (req, res) => {
   const htmlResponse = `
     <html>
       <head>
-        <title>NodeJs y Express en Vercel</title>
+        <title>Servidor ElClubDelFilete</title>
       </head>
-      <body>
-        <h1>Soy un proyecto Back end en vercel</h1>
-      </body>
     </html>
   `;
   res.send(htmlResponse);
