@@ -136,15 +136,15 @@ export class UserRepository {
       } else {
         res.cookie("access_token", data.session.access_token, {
           httpOnly: true,
-          secure: false, // cambiar a true en producción
+          secure: true, // cambiar a true en producción
           maxAge: DURATION_ACCESS_COOKIE,
-          sameSite: "Strict",
+          sameSite: "None",
         });
         res.cookie("refresh_token", data.session.refresh_token, {
           httpOnly: true,
-          secure: false, // cambiar a true en producción
+          secure: true, // cambiar a true en producción
           maxAge: DURATION_REFRESH_COOKIE,
-          sameSite: "Strict",
+          sameSite: "None",
         });
       }
       // Aca se retorna tanto para los casos de credenciales correctas, como incorrectas, puesto que lo importante es si el servidor funciona correctamente?.
@@ -205,16 +205,16 @@ export class UserRepository {
         // Establece las cookies con los nuevos tokens
         res.cookie("access_token", session.access_token, {
           httpOnly: true,
-          secure: false, // Cambiar a true en producción
+          secure: true, // Cambiar a true en producción
           maxAge: DURATION_ACCESS_COOKIE, // 20 minutos para la cookie de access_token
-          sameSite: "strict",
+          sameSite: "None",
         });
 
         res.cookie("refresh_token", session.refresh_token, {
           httpOnly: true,
-          secure: false, // Cambiar a true en producción
+          secure: true, // Cambiar a true en producción
           maxAge: DURATION_REFRESH_COOKIE, // Largo para refresh token
-          sameSite: "strict",
+          sameSite: "None",
         });
 
         res.send({ message: "Refresco exitoso" });
